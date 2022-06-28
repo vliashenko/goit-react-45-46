@@ -1,0 +1,8 @@
+.loader {
+    text-align: center;
+    transition: all 300ms ease-in-out;
+}
+
+.loader:hover {
+    transform: scale(1.1);
+}

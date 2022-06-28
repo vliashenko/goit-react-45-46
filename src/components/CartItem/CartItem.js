@@ -2,14 +2,13 @@ import React from 'react';
 import propTypes from "prop-types"
 
 const CartItem = ({ item }) => {
-
     const amount = item.count * item.price
 
     return (
         <div className='cart-item'>
             <span>{item.name}</span>
             <span>{item.price}$</span>
-
+            
             <div>
                 <button>-</button>
                 <button>1</button>
