@@ -1,5 +1,6 @@
 import React from 'react';
 import propTypes from "prop-types";
+import styles from "./TotalAmount.module.css"
 
 const TotalAmount = ({ items }) => {
 
@@ -9,7 +10,7 @@ const TotalAmount = ({ items }) => {
     }, 0)
 
     return (
-        <div className='total-amount'>
+        <div className={styles.totalAmount}>
             <p>Total: {total}$</p>
         </div>
     );
