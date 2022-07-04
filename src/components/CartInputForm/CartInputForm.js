@@ -4,13 +4,13 @@ import "./CartInputForm.scss";
 const CartInputForm = () => {
     return (
         <form className='cartInputForm'>
-            <label className='label'>
-                <span>name</span>
+            <label>
+                <span className='label'>name</span>
                 <input type="text" />  
             </label>
             
-            <label className='label'>
-                <span>price</span>
+            <label >
+                <span className='label'>price</span>
                 <input type="text" />
             </label>
             

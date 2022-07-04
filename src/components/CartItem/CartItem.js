@@ -5,17 +5,22 @@ import { createUseStyles } from "react-jss"
 
 const useStyles = createUseStyles({
     cartItem: {
+        color: "violet",
+        marginTop: "10px",
         padding: 10,
         display: "flex",
         alignItems: "center",
+        justifyContent: "space-between",
         columnGap: 30,
-        backgroundColor: "#bada55"
+        backgroundColor: "purple"
     },
     column: {
+        flex:1,
         display: "flex",
         flexDirection: "column"
     },
     counter: {
+        flex:1,
         display: "flex",
         width: '100px',
         columnGap: "10px",
@@ -23,35 +28,42 @@ const useStyles = createUseStyles({
     value: (item) => {
         
         return {
-            color: !item.count ? "red" : "green" 
+            color: !item.count ? "violet" : "green" 
         }
     },
     red: {
         color: "red",
         fontWeight: 800
+    },
+    amount: {
+        flex:1,
     }
 })
 
-const CartItem = ({ item }) => {
+const CartItem = ({ item, onChangeCount, onRemoveItem }) => {
     const styles = useStyles({ item })
     const amount = item.count * item.price
 
+    const increment = () => onChangeCount(item.id, +1);
+    const decrement = () => onChangeCount(item.id, -1);
+    const remove = () => onRemoveItem(item.id);
+
     return (
-        <div className={styles.cartItem}>
-            <div className={styles.column}>
-                <span>{item.name}</span>
-                <span>{item.price}$</span>
+        <div className={ styles.cartItem }>
+            <div className={ styles.column }>
+                <span>{ item.name }</span>
+                <span>{ item.price }$</span>
             </div>
             
             
-            <div className={styles.counter}>
-                <button>-</button>
-                <span className={styles.value}>{item.count}</span>
-                <button>+</button>
+            <div className={ styles.counter }>
+                <button onClick={ decrement }>-</button>
+                <span className={ styles.value }>{ item.count }</span>
+                <button onClick={ increment }>+</button>
             </div>
 
-            <span>{amount}$</span>
-            <Button />
+            <span className={ styles.amount }>{ amount }$</span>
+            <Button onRemoveItem={ remove }/>
         </div>
     );
 };
@@ -59,9 +71,12 @@ const CartItem = ({ item }) => {
 CartItem.propTypes = {
     item: propTypes.shape({
         name: propTypes.string.isRequired,
+        id: propTypes.number.isRequired,
         price: propTypes.number.isRequired,
         count: propTypes.number.isRequired
-    })
+    }),
+    onChangeCount: propTypes.func.isRequired,
+    onRemoveItem: propTypes.func.isRequired,
 };
 
 

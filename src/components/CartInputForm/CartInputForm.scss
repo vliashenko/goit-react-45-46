@@ -1,9 +1,11 @@
 .cartInputForm {
     padding: 10px;
-    background-color: navy;
+    background-color: rgb(83, 25, 102);
+    display: flex;
+    justify-content: space-between;
 
     .label {
         color: white;
-        margin-right: 10px;
+        padding-right: 10px;
     }
 }

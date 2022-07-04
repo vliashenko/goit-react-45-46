@@ -1,12 +1,22 @@
 import React from 'react';
 import CartItem from '../CartItem/CartItem';
 import propTypes from "prop-types";
+import styled from "styled-components";
 
-const CartItemList = ({ items }) => {
+const List = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
+const CartItemList = ({ items, onChangeCount, onRemoveItem }) => {
     return (
-        <div className='cart-item-list'>
-            {items.map(item => <CartItem key={item.id} item={item}/>)}
-        </div>
+        <List>
+            {items.map(item => <CartItem 
+                onRemoveItem={onRemoveItem} 
+                onChangeCount={onChangeCount}
+                key={item.id} 
+                item={item}/>)}
+        </List>
     );
 };
 

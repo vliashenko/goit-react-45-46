@@ -8,10 +8,10 @@ const StyledButton = styled.button`
     border-radius: 10px;
 `;
 
-const Button = () => {
+const Button = ({ onRemoveItem }) => {
     return (
-       <StyledButton close>
-            CLICK MOTHERFUCKER, CLICK IT!
+       <StyledButton onClick={onRemoveItem} close>
+            X
        </StyledButton>
     );
 };
