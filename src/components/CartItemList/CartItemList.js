@@ -2,6 +2,7 @@ import React from 'react';
 import CartItem from '../CartItem/CartItem';
 import propTypes from "prop-types";
 import styled from "styled-components";
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 
 const List = styled.div`
     display: flex;
@@ -10,13 +11,15 @@ const List = styled.div`
 
 const CartItemList = ({ items, onChangeCount, onRemoveItem }) => {
     return (
-        <List>
-            {items.map(item => <CartItem 
-                onRemoveItem={onRemoveItem} 
-                onChangeCount={onChangeCount}
-                key={item.id} 
-                item={item}/>)}
-        </List>
+        <ErrorBoundary>
+            <List>
+                {items.map(item => <CartItem 
+                    onRemoveItem={onRemoveItem} 
+                    onChangeCount={onChangeCount}
+                    key={item.id} 
+                    item={item}/>)}
+            </List>
+        </ErrorBoundary>
     );
 };
 
