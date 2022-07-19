@@ -1,0 +1,20 @@
+{
+    "cart" : [
+        {   
+            "id": 10237472395, 
+            "name": "printer", 
+            "price": 100, "count": 2, "hasGuarantee": false},
+        {   
+            "id": 223085,
+            "name": "RAM", 
+            "price": 30, "count": 1, "hasGuarantee": false},
+        {   
+            "id": 323161346,
+            "name": "motherboard", 
+            "price": 150, "count": 3, "hasGuarantee": true},
+        {   
+            "id": 43146245,
+            "name": "mouse", 
+            "price": 15, "count": 4, "hasGuarantee": false}
+    ]
+}

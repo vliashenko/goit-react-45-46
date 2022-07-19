@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo } from 'react';
 import Button from '../Button/Button';
 import propTypes from "prop-types"
 import { createUseStyles } from "react-jss"
@@ -42,7 +42,6 @@ const useStyles = createUseStyles({
 })
 
 const CartItem = ({ item, onChangeCount, onRemoveItem }) => {
-    const [ timerValue, setTimerValue ] = useState(0);
     
     const styles = useStyles({ item })
     const amount = item.count * item.price
@@ -51,27 +50,11 @@ const CartItem = ({ item, onChangeCount, onRemoveItem }) => {
     const decrement = () => onChangeCount(item.id, -1);
     const remove = () => onRemoveItem(item.id);
 
-    useEffect(() => {
-        let timerId = setInterval(() => {
-            setTimerValue((prev) => prev + 1)  
-        }, 1000)
-
-        //componentWillUnmount
-        return () => {
-            clearInterval(timerId);
-        }
-    }, [])
-
-    if(!item.namr) {
-        throw new Error(" this is damn broken component maaaan....")
-    };
-
     return (
         <div className={ styles.cartItem }>
             <div className={ styles.column }>
                 <span>{ item.name }</span>
                 <span>{ item.price }$</span>
-                <span>{ timerValue }</span>
             </div>
             
             
@@ -102,4 +85,4 @@ CartItem.propTypes = {
 };
 
 
-export default CartItem;
+export default memo(CartItem);
